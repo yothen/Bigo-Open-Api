@@ -14,7 +14,7 @@ Bigolive OAuth2.0授权登录让Bigolive用户使用Bigolive身份安全登录�
 
 # 二、授权流程接入步骤
 
-![](./img/oauth_login_example.png)
+
 
 ## 2.0 前置步骤
 
@@ -92,6 +92,7 @@ HTTP/1.1 408 Request Timeout
 
 ### 2.1.1 接入方式1：app跳转授权登录接入说明
 
+![](./img/oauth_login_example.png)
 用途：一般用于已安装Bigolive App的用户，如使用此方式，用户无安装Bigolive App，需引导用户到应用商店进行下载，建议使用此方式接入。**如使用此接入方式，可以忽略2.1.2**
 
 注意：使用此接入方式无法在测试环境验证（Bigolive App的测试环境无法对外使用）
