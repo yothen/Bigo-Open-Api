@@ -56,12 +56,12 @@ Gateway Error Codes as follows:
 
 ## 2.2. Step 1: Obtain code through authorization page
 
-For example, Bark app with Bigolive Oauth2.0 website:
-
-![](./img/oauth_login_example.png)
 
 ### 2.2.1. Access method 1: App redirection authorization login access
 
+For example, Bark app with Bigolive Oauth2.0 website:
+
+![](./img/oauth_login_example.png)
 Purpose: Generally applicable to users who have installed the Bigolive App. If this method is applied and the user does not have the Bigolive App installed, they need to be guided to download it from the app store. It is recommended to use this method for access. If this access method is applied, they may ignore 2.2.2.
 
 Note: This access method cannot be verified in the testing environment (the testing environment of the Bigolive App cannot be used externally).
