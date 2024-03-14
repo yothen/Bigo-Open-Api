@@ -92,7 +92,6 @@ HTTP/1.1 408 Request Timeout
 
 ### 2.1.1 接入方式1：app跳转授权登录接入说明
 
-![](./img/oauth_login_example.png)
 用途：一般用于已安装Bigolive App的用户，如使用此方式，用户无安装Bigolive App，需引导用户到应用商店进行下载，建议使用此方式接入。**如使用此接入方式，可以忽略2.1.2**
 
 注意：使用此接入方式无法在测试环境验证（Bigolive App的测试环境无法对外使用）
@@ -108,6 +107,10 @@ bigolive://oauth?lang=en&state=12345&scope=openid&redirect_uri=http%3A%2F%2Ftest
 ### 2.1.2 接入方式2：web页面接入说明
 
 用途：一般用于网站类应用，**如使用此接入方式，可以忽略2.1.1**
+
+业务接入示意demo：
+![](./img/oauth_login_example.png)
+
 
 第三方app集成Bigolive Oauth2.0页面
 
