@@ -10,7 +10,7 @@ Bigolive OAuth2.0 Authorization Login allows Bigolive users to securely login to
 
 The sequence diagram of access_token as follows：
 
-![](./img/access_token_flow.png)
+![](./img/access_token_flow_v2.png)
 
 
 
