@@ -345,7 +345,7 @@ host_domain = oauth.bigolive.tv
 
 timestamp= 1688701573
 
-msg_before_sign = "{\n \\"msg\\":\"hello\\"\n}/oauth2/test_sign1688701573"
+msg_before_sign = "{\n \\"msg\\":\\"hello\\"\n}/oauth2/test_sign1688701573"
 
 msg_hash = sha256(msg_before_sign)
 
