@@ -377,14 +377,10 @@ bigo-client-version: {{version}}  // optional, default 0
 头部参数填充说明：
 
 host_domain = oauth.bigolive.tv
-
 timestamp= 1688701573
-
-msg_before_sign = "{\n \"msg\":\"hello\"\n}/oauth2/test_sign1688701573"
-
+msg_before_sign = "{\n \\"msg\\":\"hello\\"\n}/oauth2/test_sign1688701573"
 msg_hash = sha256(msg_before_sign)
-
-bigo-oauth-signature = base64encode(rsa.encrypt(msg_hash))
+bigo-oauth-signature = base64encode(rsa.sign(msg_hash))
 
 
 
