@@ -14,7 +14,7 @@
 
 ​	正式环境：oauth.bigolive.tv
 
-2. HTTP状态码返回200，进行正常业务数据处理，接口返回body均是json；状态码非200，根据不同状态码进行异常诊断，参见[BIGOLIVE Oauth2.0授权登录说明](./BIGOLIVE开放平台接入说明.md#2.0.4_错误码说明)网关错误码说明。
+2. HTTP状态码返回200，进行正常业务数据处理，接口返回body均是json；状态码非200，根据不同状态码进行异常诊断，参见[BIGOLIVE Oauth2.0授权登录说明](./BIGOLIVEOpenPlatformAccessGuide_CN.md#2.0.4_错误码说明)网关错误码说明。
 
 3. 所有请求均支持Content-Type: application/x-www-form-urlencoded和Content-Type: application/json，业务按需使用，建议都是用Content-Type: application/json，注意，使用json的postdata不能换行和任何格式化，调用者需去掉换行符。
 
