@@ -279,7 +279,7 @@ See key-generation demo: [key-generation demo](./demo/generate_key.py)
 
 ### 3.1.2. Step 2: Sign the request data with private key
 
-Here is a python demo with RS256.See data-encryption demo: [data-encryption demo](./demo/encrypy_data.py)
+Here is rs256 and es256 python signature demos:  ([ES256 demo](./demo/es256_sign_req.py) , [RS256 demo](./demo/rs256_sign_req.py))
 
 
 
