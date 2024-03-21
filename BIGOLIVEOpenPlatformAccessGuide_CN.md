@@ -158,14 +158,14 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 
 ### 2.1.4 参数说明
 
-| **参数**      | **类型** | **是否必填** | **说明**                                                     |
-| ------------- | -------- | ------------ | ------------------------------------------------------------ |
-| lang          | string   | 否           | 页面多语言，参照国家码列表                                   |
-| state         | string   | 否           | 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验。在state传递的过程中会将该参数作为url的一部分进行处理，因此建议对该参数进行url encode操作，防止其中含有影响url解析的特殊字符（如'#'、'&'等）导致该参数无法正确回传。 |
-| scope         | string   | 是           | 应用授权作用域，拥有多个作用域用符号（+）分隔，弹幕应用选择danmu；openid获取加openid |
-| redirect_uri  | string   | 是           | 1.uri需要Bigolive平台授权2.使用urlEncode对链接进行处理；     |
-| response_type | string   | 是           | 必填code                                                     |
-| client_id     | string   | 是           | AppID，业务唯一标识，由Bigolive平台分配                      |
+| **参数**   | **选项** | **说明**                                                     |
+| ---------- | -------- | ------------------------------------------------------------ |
+| openId     | required | 主播的openid                                                 |
+| code       | required | 授权码，如用户之前没获取到refreshtoken，可以使用code进行获取，每次跳转都会带上 |
+| gameId     | optional | 弹幕玩法专用，识别游戏类型，由bigo平台分配                   |
+| gameType   | optional | 弹幕玩法专用，单人/多人游戏                                  |
+| inviteCode | optional | 弹幕玩法专用，房间码，用于邀约分享时快速进入游戏房           |
+
 
 **返回说明：**
 
