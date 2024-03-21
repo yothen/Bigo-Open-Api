@@ -38,7 +38,13 @@ Please provide relevant information in advance, which includes redirection autho
 | app_name     | Display the third-party app name on the authorization  page  |
 | redirect_uri | After successful verification of login on Bigo Live,  redirect to the receiving address for code sending, which supports multiple  redirect_uri whitelists |
 
-### 2.1.4. Error code
+### 2.1.4. Generate private and public key
+
+The third parties should generate the private and public key, keep the private key safely yourself, and provide the public key and algorithm(RS256 or ES256) to Bigo. 
+
+Detail See [PART 3.1.1.](#311-step-1-generate-private-and-public-key)
+
+### 2.1.5. Error code
 
 It is specially agreed that when the HTTP gateway status code returns 200, normal business data processing is carried out, and the interface returns a JSON body. The specific business error code will be returned in the JSON body. If the status code is not 200, abnormal diagnosis should be carried out based on different status codes.
 
@@ -114,13 +120,25 @@ If the user denies permission, no redirection will occur
 **API:**
 
 ```python
-POST  https://{{host_domain}}/oauth2/token
-Content-type:application/x-www-form-urlencoded
+POST  https://{{host_domain}}/sign/oauth2/token
+Content-type: application/json
+bigo-client-id: {{client_id}}
+bigo-oauth-signature: {{calculate the sign}} 
+bigo-timestamp: {{timestamp}}
 
-code=xxxx&grant_type=authorization_code&client_id=xxxxxxxxxx&client_secret=xxxxxxxxx&redirect_uri=xxxxxxxx
+{
+    "code":"{{code}}",
+    "grant_type":"authorization_code",
+    "client_id":"{{client_id}}",
+    "redirect_uri":"{{redirect_uri}}"
+}
 ```
 
 The access_token is used as a credential for third-party applications to access user data on the Bigo Live platform. It is important to obtain the accesstoken through backend and then return it to the client to prevent security information leakage. The validity period is usually set to 2 hours.
+
+**Request headers description:**
+
+Detail See [PART 3.1.2. & PART 3.1.3.](#312-step-2-sign-the-request-data-with-private-key)
 
 **Request parameter description:**
 
@@ -130,7 +148,6 @@ The access_token is used as a credential for third-party applications to access 
 | grant_type     | string   | Yes          | Required authorization_code                                  |
 | redirect_uri   | string   | Yes          | 1. To maintain consistency with obtaining the code in  2.1  1.    Use urlEncode to process the link  2.    It needs to be placed at the end |
 | client_id      | string   | Yes          | Business unique identifier assigned by Bigolive              |
-| client_secret  | string   | Yes          | The business secret key cannot exist on the client side  and must be stored on the server to prevent leakage |
 
 **Response description:**
 
@@ -183,22 +200,33 @@ Content-Type: application/json
 **API:**
 
 ```python
-POST  https://{{host_domain}}/oauth2/token
-Content-type:application/x-www-form-urlencoded
+POST https://{{host_domain}}/sign/oauth2/refresh_token
+Content-type: application/json
+bigo-client-id: {{client_id}}
+bigo-oauth-signature: {{calculate the sign}} 
+bigo-timestamp: {{timestamp}}
 
-code=xxxx&grant_type=authorization_code&client_id=xxxxxxxxxx&client_secret=xxxxxxxxx&redirect_uri=xxxxxxxx
+{
+    "grant_type":"refresh_token",
+    "refresh_token":"{{refresh_token}}",
+    "client_id":"{{client_id}}"
+}
+
 ```
 
 It is necessary to refresh the accesstoken through the backend before returning it to the client end to prevent the leakage of security information
 
+**Request headers description:**
+
+Detail See [PART 3.1.2. & PART 3.1.3.](#312-step-2-sign-the-request-data-with-private-key)
+
 **Request parameter description:**
 
-| **Parameters** | **Type** | **Required** | **Description**                                              |
-| -------------- | -------- | ------------ | ------------------------------------------------------------ |
-| refresh_token  | string   | Yes          | refresh_token returned from 2.2                              |
-| grant_type     | string   | Yes          | Authorization type, refresh_token is required                |
-| client_id      | string   | Yes          | Business unique identifier assigned by Bigolive              |
-| client_secret  | string   | Yes          | The business secret key cannot exist on the client side  and must be stored on the server to prevent leakage |
+| **Parameters** | **Type** | **Required** | **Description**                                 |
+| -------------- | -------- | ------------ | ----------------------------------------------- |
+| refresh_token  | string   | Yes          | refresh_token returned from 2.2                 |
+| grant_type     | string   | Yes          | Authorization type, refresh_token is required   |
+| client_id      | string   | Yes          | Business unique identifier assigned by Bigolive |
 
 **Response description:**
 
@@ -231,11 +259,11 @@ Bigo only support <font color='#dd00000'>**RS256**</font>(RSA-SHA256) and <font 
 
 **References:** 
 
-​            A.     RS256, PKCS#1 v1.5 (RSA):
+            A.     RS256, PKCS#1 v1.5 (RSA):
 
 https://pycryptodome.readthedocs.io/en/latest/src/signature/pkcs1_v1_5.html
 
-​            B.     ES256, DSA and ECDSA:
+            B.     ES256, DSA and ECDSA:
 
 https://pycryptodome.readthedocs.io/en/latest/src/signature/dsa.html
 
@@ -317,11 +345,11 @@ host_domain = oauth.bigolive.tv
 
 timestamp= 1688701573
 
-msg_before_sign = "{\n \"msg\":\"hello\"\n}/oauth2/test_sign1688701573"
+msg_before_sign = "{\n \\"msg\\":\"hello\\"\n}/oauth2/test_sign1688701573"
 
 msg_hash = sha256(msg_before_sign)
 
-bigo-oauth-signature = base64encode(rsa.encrypt(msg_hash))
+bigo-oauth-signature = base64encode(rsa.sign(msg_hash))
 
 
 
@@ -354,7 +382,7 @@ Authorization: Bearer {{access_token}}
 
 **4.1.1. Header description:**
 
-​            A.     Authorization：
+A.     Authorization：
 
 i. Please do not modify the **Bearer**, it is a fixed authentication method of Bigo
 
