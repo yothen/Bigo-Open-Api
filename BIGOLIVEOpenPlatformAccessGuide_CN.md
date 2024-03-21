@@ -154,7 +154,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 | gameType   | optional | 单人/多人游戏                                                |
 | inviteCode | optional | 房间码，用于邀约分享时快速进入游戏房                         |
 
-
+注：根据不同的接入方式可定制相关参数
 
 ### 2.1.4 参数说明
 
