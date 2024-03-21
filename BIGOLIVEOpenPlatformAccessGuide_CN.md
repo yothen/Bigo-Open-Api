@@ -316,7 +316,7 @@ https://pycryptodome.readthedocs.io/en/latest/src/signature/dsa.html
 
 ### 3.1.2. 第二步: 使用私钥签名数据
 
-请参考python demo（使用 RS256签名数据）[ data-encryption demo](./demo/encrypy_data.py)
+请参考python demo ([ES256 demo](./demo/es256_sign_req.py) , [RS256 demo](./demo/rs256_sign_req.py))
 
 ### 3.1.3. 第三步: 使用签名调用API
 
