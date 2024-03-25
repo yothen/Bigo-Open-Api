@@ -193,7 +193,6 @@ bigo-timestamp: {{timestamp}}
 {
     "code":"{{code}}",
     "grant_type":"authorization_code",
-    "client_id":"{{client_id}}",
     "redirect_uri":"{{redirect_uri}}"
 }
 
@@ -272,8 +271,7 @@ bigo-timestamp: {{timestamp}}
 
 {
     "grant_type":"refresh_token",
-    "refresh_token":"{{refresh_token}}",
-    "client_id":"{{client_id}}"
+    "refresh_token":"{{refresh_token}}"
 }
 
 ```
