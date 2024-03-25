@@ -146,7 +146,6 @@ Detail See [PART 3.1.2. & PART 3.1.3.](#312-step-2-sign-the-request-data-with-pr
 | code           | string   | Yes          | The temporary ticket returned by the authorized login,  refer to 2.1 |
 | grant_type     | string   | Yes          | Required authorization_code                                  |
 | redirect_uri   | string   | Yes          | 1. To maintain consistency with obtaining the code in  2.1  1.    Use urlEncode to process the link  2.    It needs to be placed at the end |
-| client_id      | string   | Yes          | Business unique identifier assigned by Bigolive              |
 
 **Response description:**
 
@@ -224,7 +223,6 @@ Detail See [PART 3.1.2. & PART 3.1.3.](#312-step-2-sign-the-request-data-with-pr
 | -------------- | -------- | ------------ | ----------------------------------------------- |
 | refresh_token  | string   | Yes          | refresh_token returned from 2.2                 |
 | grant_type     | string   | Yes          | Authorization type, refresh_token is required   |
-| client_id      | string   | Yes          | Business unique identifier assigned by Bigolive |
 
 **Response description:**
 
