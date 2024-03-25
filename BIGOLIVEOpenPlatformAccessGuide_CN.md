@@ -207,7 +207,6 @@ bigo-timestamp: {{timestamp}}
 | code         | string   | 是           | 授权登录返回的临时票据，参考2.1                              |
 | grant_type   | string   | 是           | 必填authorization_code                                       |
 | redirect_uri | string   | 是           | 1.跟2.1获取code的保持一致            2.     使用urlEncode对链接进行处理            3.     需要放到最后一位 |
-| client_id    | string   | 是           | 业务唯一标识，Bigolive平台分配                               |
 
 返回参数说明：
 
@@ -283,7 +282,7 @@ bigo-timestamp: {{timestamp}}
 | ------------- | -------- | ------------ | ------------------------------ |
 | refresh_token | string   | 是           | 2.2返回的refresh_token         |
 | grant_type    | string   | 是           | 授权类型，必填refresh_token    |
-| client_id     | string   | 是           | 业务唯一标识，Bigolive平台分配 |
+
 
 返回参数说明：
 
