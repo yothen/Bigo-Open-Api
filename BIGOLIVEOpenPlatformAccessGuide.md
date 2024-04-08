@@ -44,6 +44,8 @@ The third parties should generate the private and public key, keep the private k
 
 Detail See [PART 3.1.1.](#311-step-1-generate-private-and-public-key)
 
+You can pre-check the format of public key if is correct through [this website](https://merri.cx/enigmator/cryptanalysis/rsa_key_analysis.html).
+
 ### 2.1.5. Error code
 
 It is specially agreed that when the HTTP gateway status code returns 200, normal business data processing is carried out, and the interface returns a JSON body. The specific business error code will be returned in the JSON body. If the status code is not 200, abnormal diagnosis should be carried out based on different status codes.
