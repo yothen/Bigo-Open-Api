@@ -5,7 +5,7 @@
 Bigolive OAuth2.0 Authorization Login allows Bigolive users to securely login to third-party applications or websites using their Bigolive credentials. After the user authorizes the third-party access through OAuth, the third-party application can obtain the user's access_token and use it to access the Bigolive user's basic information. Bigolive OAuth2.0 Authorization Login currently supports the authorization_code mode and is suitable for server-side application authorization. The overall process of this mode is as follows:
 
 1. When a third-party initiates an OAuth login authorization request, the OAuth authorization page will be redirected to the third-party website after the user allows the third-party application to access their information, carrying a temporary authorization code parameter. 
-2. By using the code parameter along with AppID and AppSecret, access_token can be obtained through the API. 
+2. By using the code parameter along with AppID, access_token can be obtained through the API. 
 3. By using access_token, platform interface can be requested to obtain user basic data resources or to assist users in achieving basic operations.
 
 The sequence diagram of access_token as follows：
@@ -26,7 +26,7 @@ Production environment: [oauth.bigolive.tv](http://oauth.bigolive.tv) , backup d
 
 ### 2.1.2. Business Key Allocation
 
-Bigo will allocate AppID and AppSecret for third-party applications, and third-party applications will provide the icon URL of the authorization page. If necessary, please contact the live broadcast platform liaison urgently to obtain it.
+Bigo will allocate AppID for third-party applications, and third-party applications will provide the icon URL of the authorization page. If necessary, please contact the live broadcast platform liaison urgently to obtain it.
 
 ### 2.1.3. Required information from the business side
 
