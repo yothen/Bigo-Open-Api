@@ -94,27 +94,60 @@ HTTP/1.1 408 Request Timeout
 
 
 
-## 2.1 第一步：通过授权页获取code
+## 2.1 第一步：通过授权页获取code （任选一种接入方式，也可同时支持多种）
 
-### 2.1.1 接入方式1：app跳转授权登录接入说明
+### 2.1.1 接入方式1：app跳转授权登录
 
 ![](./img/oauth_login_example.png)
 
-用途：一般用于已安装Bigolive App的用户，如使用此方式，用户无安装Bigolive App，需引导用户到应用商店进行下载，建议使用此方式接入。**如使用此接入方式，可以忽略2.1.2**
+用途：一般用于第三方app，拉起Bigolive App客户端快速授权，如使用此方式，用户未安装Bigolive App，需引导用户到应用商店进行下载，建议使用此方式接入。
 
 注意：使用此接入方式无法在测试环境验证（Bigolive App的测试环境无法对外使用）
 
-第三方app集成Bigolive Oauth2.0 deeplink:
-
+第三方app可以通过集成Bigolive Oauth2.0 deeplink 跳转bigolive授权页面，deeplink格式：
 ```
-bigolive://oauth?lang=en&state=12345&scope=openid&redirect_uri=http%3A%2F%2Ftest-login.uho.fun%2Fd%2Fbigo.php%3FIEMI%3D8651f0e36795d692de18a50d16e80634&response_type=code&client_id=1WlQhfrwcb2Gmqa
+bigolive://oauth
+?lang=en
+&state=12345
+&scope=openid
+&response_type=code
+&client_id=$ClientId
+&redirect_uri=urlencode($RedirectUri)
+```
+示例：
+```
+bigolive://oauth?lang=en&state=12345&scope=openid&response_type=code&client_id=1WlQhfrwcb2Gmqa&redirect_uri=http%3A%2F%2Ftest-login.uho.fun%2Fd%2Fbigo.php%3FIEMI%3D8651f0e36795d692de18a50d16e80634
+```
+用户点击确认授权后，会在客户端端内打开redirect_uri，格式如下：$RedirectUri?state=12345&code=$code
+
+若是打算将code回调到第三方app，可以将redirect_uri配置为第三方app支持的deeplink：如knight://mylink
+
+### 2.1.2 接入方式2：使用deeplink跳转Bigolive客户端授权并携带code跳转回浏览器
+用途：一般用于移动端网站类应用。授权流程与2.1.1类似，第三方web网站拉起bigolive App授权，并将redirect_uri使用系统浏览器打开
+
+deeplink格式：
+```
+let TempRedirectUri = bigolive://web?openMode=1&url=urlencode($RedirectUri)
+
+bigolive://oauth
+?lang=en
+&state=123
+&scope=openid
+&response_type=code
+&client_id=$ClientId
+&redirect_uri=urlencode($TempRedirectUri)
 ```
 
+示例：
+```
+bigolive://oauth?lang=zh&state=123&client_id=1WlQhfrwcb2Gmqa&response_type=code&scope=openid&redirect_uri=bigolive%3A%2F%2Fweb%3FopenMode%3D1%26url%3Dhttp%253A%252F%252F127.0.0.1%253A3000%252Fcallback
+```
+用户点击确认授权后，会调用系统浏览器打开redirect_uri，格式如下：$RedirectUri?state=12345&code=$code
 
 
-### 2.1.2 接入方式2：web页面接入说明
+### 2.1.3 接入方式3：web页面接入说明
 
-用途：一般用于网站类应用，**如使用此接入方式，可以忽略2.1.1**
+用途：用于通用网站类应用。
 
 第三方app集成Bigolive Oauth2.0页面
 
@@ -141,7 +174,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 10000020001 - 10000020005 均可
 
 
-### 2.1.3 接入方式3：Bigolive内嵌接入
+### 2.1.4 接入方式4：Bigolive内嵌接入
 
 用途：用于在Bigolive APP内嵌或跳转到第三方url或第三方APP
 
@@ -158,7 +191,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 
 注：根据不同的接入方式可定制相关参数
 
-### 2.1.4 参数说明
+### 2.1.5 参数说明
 
 | **参数**   | **选项** | **说明**                                                     |
 | ---------- | -------- | ------------------------------------------------------------ |
