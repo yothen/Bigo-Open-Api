@@ -796,6 +796,74 @@ bigo-oauth-signature：签名验证方式sign
 | rescode  | int      | 200：成功300：直播状态存在问题，详见message400：请求参数异常401：达到调用频限500：平台异常，可重试 |
 | messge   | string   | 具体错误说明                                                 |
 
+## 14. 推送直播间弹幕测试数据
+
+**说明**：推送主播直播间弹幕测试数据，此接口仅测试阶段使用(主要用于测试礼物数据)，需bigo侧配置主播白名单。
+
+**频率控制**：全平台 100/s，单人5/s
+
+**accesstoken API：**
+
+```
+POST https://{{host_domain}}/broom/push_test_data
+Content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{{postdata}}
+```
+
+**头部说明：**
+Authorization：
+	Bearer不要修改，是Bigo固定的一个鉴权方式
+	access_token：授权登录后获取的用户授权token
+
+**请求参数说明：**
+
+| **参数**   | **类型** | **是否必填** | **说明**                                                     |
+| ---------- | -------- | ------------ | ------------------------------------------------------------ |
+| seqid      | string   | 是           | 请求识别id，建议保证唯一性                                   |
+| game_id    | string   | 是           | 识别游戏类型，由bigo平台分配。                               |
+| game_sess  | string   | 否           | 游戏会话id，挂载时游戏生成，不设置，将尝试自动使用主播当前所开启游戏会话id |
+| datas      | array    | 是           | 数据数组，详见如下数据说明，与2.拉取直播间弹幕数据datas一致  |
+
+```
+"datas":[
+    {
+        "type":"gift",//礼物消息
+        "gift_id":1234,//礼物id
+        "gift_url":"https://xxxx",//礼物图标
+        "gift_level":1,//礼物档位
+        "gift_count":10,//combo数量
+        "gift_name":"aaa", // 礼物名称
+        "user":"xxxxxxx",//送礼用户的openid
+        "nick_name":"xxxxx",//送礼用户的昵称
+        "user_img":"xxxxx",//送礼用户的头像url
+        "ts":"1692323232309",//发送 ms时间戳(字符串数字)
+        "data_seq":"1212091023"//数据的序列号(字符串数字)，同一局游戏中不能重复，通过此字段进行去重
+    },
+    {
+        "type":"gift",//礼物消息
+        "gift_id":1234,//礼物id
+        "gift_url":"https://xxxx",//礼物图标
+        "gift_level":1,//礼物档位
+        "gift_count":10,//combo数量
+        "gift_name":"aaa", // 礼物名称
+        "user":"xxxxxxx",//送礼用户的openid
+        "nick_name":"xxxxx",//送礼用户的昵称
+        "user_img":"xxxxx",//送礼用户的头像url
+        "ts":"1692323232310",//发送 ms时间戳(字符串数字)
+        "data_seq":"1212091024"//数据的序列号(字符串数字)，同一局游戏中不能重复，通过此字段进行去重
+    }
+]
+```
+
+**返回参数说明：**
+
+| **参数**   | **类型** | **说明**                                                     |
+| ---------- | -------- | ------------------------------------------------------------ |
+| seqid      | string   | 原封不动返回请求的seqid                                      |
+| rescode    | int      | 200：成功 300: 主播或游戏状态未开启 400: 请求参数异常 500：平台异常，可重试 |
+| messge     | string   | 具体错误说明                                                 |
 
 
 # 二、推送给第三方接口说明

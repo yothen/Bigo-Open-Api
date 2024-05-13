@@ -139,7 +139,7 @@
 | ---------- | ---------- | ------------------------------------------------------------ |
 | seqid      | string     | Bigo平台生成的seqid，用于跟踪请求                            |
 | timestamp  | int64      | ms时间戳                                                     |
-| danmu_data | json array | 数据数组，详见二.3拉取直播间弹幕数据                         |
+| danmu_data | json array | 数据数组，详见[danmu_data_api_cn.md#2. 拉取直播间弹幕数据](https://github.com/yothen/Bigo-Open-Api/blob/main/danmu_data_api_cn.md#2--%E6%8B%89%E5%8F%96%E7%9B%B4%E6%92%AD%E9%97%B4%E5%BC%B9%E5%B9%95%E6%95%B0%E6%8D%AE)                      |
 | game_id    | string     | 识别游戏类型，由bigo平台分配。                               |
 | game_sess  | string     | 游戏会话id                                                   |
 | status     | int        | 直播间状态1：直播间直播状态（无挂载弹幕游戏）2：直播间开启挂载后的状态3：直播间关播时触发，只会推送一次，触发后本次弹幕直播不会再推送数据 |
