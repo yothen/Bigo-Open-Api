@@ -835,7 +835,7 @@ Authorization：
         "gift_level":1,//礼物档位
         "gift_count":10,//combo数量
         "gift_name":"aaa", // 礼物名称
-        "user":"xxxxxxx",//送礼用户的openid
+        "user":"xxxxxxx",//送礼用户的openid，需要真实用户openid
         "nick_name":"xxxxx",//送礼用户的昵称
         "user_img":"xxxxx",//送礼用户的头像url
         "ts":"1692323232309",//发送 ms时间戳(字符串数字)
@@ -848,7 +848,7 @@ Authorization：
         "gift_level":1,//礼物档位
         "gift_count":10,//combo数量
         "gift_name":"aaa", // 礼物名称
-        "user":"xxxxxxx",//送礼用户的openid
+        "user":"xxxxxxx",//送礼用户的openid，需要真实用户openid
         "nick_name":"xxxxx",//送礼用户的昵称
         "user_img":"xxxxx",//送礼用户的头像url
         "ts":"1692323232310",//发送 ms时间戳(字符串数字)
