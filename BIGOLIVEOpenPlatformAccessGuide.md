@@ -186,7 +186,7 @@ Detail See [PART 3.1.2. & PART 3.1.3.](#312-step-2-sign-the-request-data-with-pr
 | access_token   | string       | The interface calling credential, valid for 2 hours;         |
 | token_type     | string       | Authorization type, can be ignored, must return  "bearer"    |
 | expires_in     | unsigned int | The validity duration of the accesstoken, in seconds |
-| refresh_token  | string       | The token for refreshing the access_token by the user  has a validity period longer than that of the access_token and is set to one  month. For specific usage, please refer to section 2.3 |
+| refresh_token  | string       | The token for refreshing the access_token by the user, and its validity period is permanent. For specific usage, please refer to section 2.3 |
 | scope          | string       | Application authorization scope                              |
 | openid         | string       | Unique identifier for authorized users                       |
 | message        | string       | Specific error message, please refer to the error  message instruction below. |
