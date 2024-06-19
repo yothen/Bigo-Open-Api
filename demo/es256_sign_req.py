@@ -10,11 +10,10 @@ from Crypto.Hash import SHA256
 # const value
 host = "https://livelbs-test-pro.bigo.sg:1009"
 # host = "https://oauth.bigolive.tv"
-client_id = "EBxsymYnf3rtFVj"
-# client_id = "XBdecYG5Fj5YdGz"
+client_id = "{your-clientid}" 
 client_version = 1
-ecc_private_key_base64 = "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR0hBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJHMHdhd0lCQVFRZ1dna2JMSUlsWlFFQ2RPWEsKQklhcE5iMjE2ak54UVVJZUF1S0pDRjJGZ3UyaFJBTkNBQVFQb09PNS94SCs2L0E3MlQwRVRpQ2YxQ3Y4amlkNQpRaU1PdFpkbUgwZ0hrTTdHR0hYWWt5aDk0STRIZzVHMk1zcjhkYldNWDd6djZ1Z1BxaURFUzQ1SwotLS0tLUVORCBQUklWQVRFIEtFWS0tLS0t"
-ecc_public_key_base64 = "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFRDZEanVmOFIvdXZ3TzlrOUJFNGduOVFyL0k0bgplVUlqRHJXWFpoOUlCNURPeGhoMTJKTW9mZUNPQjRPUnRqTEsvSFcxakYrODcrcm9ENm9neEV1T1NnPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"
+ecc_private_key_base64 = "use generate_key.py or generate_key.sh to generate and fill in" #must generate yourself
+ecc_public_key_base64 = "use generate_key.py or generate_key.sh to generate and fill in" #must generate yourself
 
 ecc_private_key = base64.b64decode(ecc_private_key_base64)
 ecc_public_key = base64.b64decode(ecc_public_key_base64)
