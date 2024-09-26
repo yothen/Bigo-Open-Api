@@ -343,7 +343,7 @@ bigo-oauth-signature: {sign}
 
 demo is using Server-side Signature Authentication.
 
-for example, demo is assigned client_id=UP52el4VDWDqgw4 and client_secret=UPdsDSD52el4VSDSDWRDSssDWss//sasDqgw4（**developer should replace the id and secret, both of demo are not work**)
+for example, demo is assigned client_id=UP52el4VDWDqgw4（**developer should replace the id and secret, both of demo are not work**)
 
 developer should test this api firstly to ensure the generation of bigo-oauth-signature is work.
 
