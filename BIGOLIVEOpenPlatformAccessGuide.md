@@ -451,9 +451,8 @@ No input parameters required
 
 
 
-## 4.2. Reseller API
-
-See: [Reseller API](./reseller_api.md)
+## 4.2. Currency API
+waiting for update
 
 ## 4.3. Damu Data API
 
