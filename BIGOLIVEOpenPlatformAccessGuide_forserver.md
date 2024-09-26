@@ -173,6 +173,6 @@ HTTP/1.1 200
 
 
 
-## 4.2. Reseller API
+## 4.2. Currency API
 
 See: the local  doc diamond_api.pdf
