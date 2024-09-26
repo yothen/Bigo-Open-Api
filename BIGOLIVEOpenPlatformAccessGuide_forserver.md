@@ -136,7 +136,6 @@ developer should test this api firstly to ensure the generation of bigo-oauth-si
 POST https://{{host_domain}}/oauth2/test_sign HTTP/1.1
 Content-type: application/json
 bigo-client-id: UP52el4VDWDqgw4
-bigo-openid: 4p4sCJHRPGeTcqNp8YWgP1VutodfzkEoWF  // optional
 bigo-oauth-signature: {{bigo-oauth-signature}}
 bigo-timestamp: {{timestamp}}
 bigo-client-version: {{version}}  // optional, default 0
