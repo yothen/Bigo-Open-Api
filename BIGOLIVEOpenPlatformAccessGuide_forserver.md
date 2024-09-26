@@ -18,7 +18,7 @@ Production environment: [oauth.bigolive.tv](http://oauth.bigolive.tv) , backup d
 
 ### 2.1.2. Business Key Allocation
 
-Bigo will allocate AppID for third-party applications, and third-party applications will provide the icon URL of the authorization page. If necessary, please contact the live broadcast platform liaison urgently to obtain it.
+Bigo will allocate AppID for third-party applications. If necessary, please contact the live broadcast platform liaison urgently to obtain it.
 
 ### 2.1.3. Required information from the business side
 
