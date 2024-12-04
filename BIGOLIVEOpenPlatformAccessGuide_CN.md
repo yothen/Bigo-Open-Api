@@ -4,8 +4,8 @@
 
 Bigolive OAuth2.0授权登录让Bigolive用户使用Bigolive身份安全登录第三方应用或网站，在用户通过Oauth授权登录第三方应用后，第三方可以获取到用户的接口调用凭证（access_token），通过access_token可以获取Bigolive用户基本的开放信息等。Bigolive OAuth2.0授权登录目前支持authorization_code模式，适用于拥有server端的应用授权。该模式整体流程为：
 
-1. 第三方发起Oauth登录授权请求，用户允许授权第三方应用后，Oauth授权页面会重定向到第三方网站，并且带上授权临时票据code参数； 
-2. 通过code、AppID参数等，通过API换取access_token； 
+1. 第三方发起Oauth登录授权请求，用户允许授权第三方应用后，Oauth授权页面会重定向到第三方网站，并且带上授权临时票据code参数；
+2. 通过code、AppID参数等，通过API换取access_token；
 3. 通过access_token进行平台接口调用，获取用户基本数据资源或帮助用户实现基本操作。
 
 获取access_token时序图：
@@ -40,7 +40,7 @@ Bigolive OAuth2.0授权登录让Bigolive用户使用Bigolive身份安全登录�
 | app_name     | 授权页面展示第三方app名称，无多语言，建议均使用英文字符                    |
 | redirect_uri | 登录bigolive验证成功后跳转发送code的接收地址，支持多个redirect_uri白名单 |
 
-### **2.0.3 业务生成公私钥** 
+### **2.0.3 业务生成公私钥**
 
 参考 [第三章节 #3.1.1. 第一步: 生成公私钥](#311-第一步-生成公私钥)
 
@@ -77,17 +77,17 @@ HTTP/1.1 405 Method Not Allowed
 {"msg":"invalid uri"}
 
 2.请求参数问题（参数类型，参数个数等）
-HTTP/1.1 500 Internal Server Error 
+HTTP/1.1 500 Internal Server Error
 
 {"msg":"internal server error"}
 
 3.token非法或过期
-HTTP/1.1 401 Invalid Token 
+HTTP/1.1 401 Invalid Token
 
 {"msg":"Invalid Token"}
 
 4.触发频次限制
-HTTP/1.1 408 Request Timeout 
+HTTP/1.1 408 Request Timeout
 
 {"msg":"server frequency limited"}
 ```
@@ -109,7 +109,7 @@ HTTP/1.1 408 Request Timeout
 ```
 bigolive://oauth
 ?lang=en
-&state=12345 
+&state=12345
 &scope=openid
 &response_type=code
 &client_id=${ClientId}
@@ -199,6 +199,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 | gameType   | optional | 单人/多人游戏                                                |
 | inviteCode | optional | 房间码，用于邀约分享时快速进入游戏房                         |
 | lang | optional | 语言码，用户在bigolive客户端的语言码，第三方可以适配相关的语言                         |
+| isRtmp | optional | 是否使用rtmp推流方式 |
 
 注：根据不同的接入方式可定制相关参数
 
@@ -215,7 +216,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 
 **返回说明：**
 
-用户允许授权后，将会重定向到redirect_uri的网址上，并且带上code和state参数redirect_uri?code=CODE&state=STATE 
+用户允许授权后，将会重定向到redirect_uri的网址上，并且带上code和state参数redirect_uri?code=CODE&state=STATE
 
 若用户禁止授权，则不会发生重定向。
 
@@ -227,7 +228,7 @@ https://www.bigo.tv/oauth2/pc.html?lang=en&state=12345&scope=user_im+openid&redi
 
 access_token用于第三方应用获取BigoLive平台相关用户数据的凭证。务必通过后台获取accesstoken再返回给客户端，防止安全信息泄露。有效期一般设置为10天。
 
-API: 
+API:
 
 ```
 POST  https://{{host_domain}}/sign/oauth2/token
@@ -305,7 +306,7 @@ Content-Type: application/json
 
 务必通过后台刷新accesstoken再返回给客户端，防止安全信息泄露
 
-API: 
+API:
 
 ```
 POST https://{{host_domain}}/sign/oauth2/refresh_token
@@ -509,7 +510,7 @@ Example：
 HTTP/1.1 200
 
 {
-    "openid":"AREs3WAE9dkxPHD2boypQFU9CJo8CITFhPhr91",                      
+    "openid":"AREs3WAE9dkxPHD2boypQFU9CJo8CITFhPhr91",
     "nick_name":"ID:861163128","bigo_id":"861163128",
     "res_code":200,
     "avatars":{

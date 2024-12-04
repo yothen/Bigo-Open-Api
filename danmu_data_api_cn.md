@@ -630,7 +630,7 @@ Authorization：
 | **参数** | **类型** | **说明**                                                     |
 | -------- | -------- | ------------------------------------------------------------ |
 | seqid    | string   | 原封不动返回请求的seqid                                      |
-| rescode  | int      | 200：成功，可进行推流201：主播还没ready，第三方需要轮询直到返回200202：主播已关播或主播直播间无需接收游戏流，第三方可以取消推流500：服务端异常，需重试 |
+| rescode  | int      | 200：成功，可进行推流 201：主播还没ready，第三方需要轮询直到返回200 202：主播已关播或主播直播间无需接收游戏流，第三方可以取消推流 500：服务端异常，需重试 |
 | messge   | string   | 具体错误说明                                                 |
 | rtmp_url | string   | bigo提供的服务流地址。第三方可拼接上下文信息进行消息传递（不能使用平台预留的字段）**备注：**如第三方需要感知推流异常，需要填充回调地址，encode_uri(url)加到rtmp_url后面进行推流。例如：rtmp_url返回是rtmp://publish.bigo.tv/game/{openid}?ck=xxxxxxx&sign=xxxxxxxx&game_id=xxx填充回调地址后：rtmp://publish.bigo.tv/game/{openid}?ck=xxxxxxx&sign=xxxxxxxx&game_id=xxx&redirect_url=xxxxx |
 
