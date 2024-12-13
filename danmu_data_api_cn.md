@@ -632,7 +632,7 @@ Authorization：
 | seqid    | string   | 原封不动返回请求的seqid                                      |
 | rescode  | int      | 200：成功，可进行推流 201：主播还没ready，第三方需要轮询直到返回200 202：主播已关播或主播直播间无需接收游戏流，第三方可以取消推流 500：服务端异常，需重试 |
 | messge   | string   | 具体错误说明                                                 |
-| rtmp_url | string   | bigo提供的服务流地址。第三方可拼接上下文信息进行消息传递（不能使用平台预留的字段），token需第三方拼接填写用户的access_token **备注：**如第三方需要感知推流异常，需要填充回调地址，encode_uri(url)加到rtmp_url后面进行推流。例如：rtmp_url返回是rtmp://publish.bigo.tv/game/{openid}?game_id=xxx&token=xxxxxxxx填充回调地址后：rtmp://publish.bigo.tv/game/{openid}?game_id=xxx&token=xxxxxxxx&redirect_url=xxxxx |
+| rtmp_url | string   | bigo提供的服务流地址。第三方可拼接上下文信息进行消息传递（不能使用平台预留的字段），token需第三方拼接填写用户的access_token **备注：**如第三方需要感知推流异常，需要填充回调地址，encode_uri(url)加到rtmp_url后面进行推流。例如：rtmp_url返回是rtmp://publish.bigo.tv/gameplay/{openid}/{md5}?game_id=xxx&token=xxxxxxxx填充回调地址后：rtmp://publish.bigo.tv/gameplay/{openid}/{md5}?game_id=xxx&token=xxxxxxxx&redirect_url=xxxxx |
 
 
 
@@ -666,6 +666,12 @@ errorDesc 是一个数组，每一个元素的结构：
 | ----------- | -------- | ------------------------------------------------------------ |
 | reason      | int      | status106时填充，参考以下枚举值enum StreamStopReason{  UNSUPPORT_AUDIO_FORMAT = 1, //不支持的音频编码  UNSUPPORT_VIDEO_FORMAT = 2, //不支持的视频编码}; |
 | recommended | string   | status106时填充，错误参数对应的正确推荐值：{  "AAC",  "H264" }; |
+
+第三方收到回调处理后，返回如下信息
+| **参数** | **类型** | **说明**                                                     |
+| -------- | -------- | ------------------------------------------------------------ |
+| code   | int      | 0：成功, 其他为失败                                            |
+| messge | string   | 具体错误说明                                                   |
 
 
 
