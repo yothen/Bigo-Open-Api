@@ -156,6 +156,7 @@ bigo-oauth-signature：签名验证方式sign
                 "gift_id":1234,//礼物id
                 "gift_url":"https://xxxx",//礼物图标
                 "gift_level":1,//礼物档位
+                "gift_value":10,//礼物价格
                 "gift_count":10,//combo数量
                 "gift_name":"aaa", // 礼物名称
                 "user":"xxxxxxx",//送礼用户的openid
@@ -371,12 +372,14 @@ bigo-oauth-signature：签名验证方式sign
     {
         "giftid":1234,//礼物id
         "gift_level":1,//礼物档位
+        "gift_value":10,//礼物价格
         "icon":"https://static.bigo.tv/xs9sxjsd.webp",//礼物图标icon
         "gift_name":"aaa" // 礼物名称
     },
     {
         "giftid":1235,//礼物id
         "gift_level":2,//礼物档位
+        "gift_value":10,//礼物价格
         "icon":"https://static.bigo.tv/xs9sxjsdssd.webp",//礼物图标icon
         "gift_name":"aaa" // 礼物名称
     }
@@ -840,6 +843,7 @@ Authorization：
         "gift_id":1234,//礼物id
         "gift_url":"https://xxxx",//礼物图标
         "gift_level":1,//礼物档位
+        "gift_value":10,//礼物价格
         "gift_count":10,//combo数量
         "gift_name":"aaa", // 礼物名称
         "user":"xxxxxxx",//送礼用户的openid，需要真实用户openid
@@ -853,6 +857,7 @@ Authorization：
         "gift_id":1234,//礼物id
         "gift_url":"https://xxxx",//礼物图标
         "gift_level":1,//礼物档位
+        "gift_value":10,//礼物价格
         "gift_count":10,//combo数量
         "gift_name":"aaa", // 礼物名称
         "user":"xxxxxxx",//送礼用户的openid，需要真实用户openid
