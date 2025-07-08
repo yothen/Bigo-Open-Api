@@ -31,7 +31,7 @@ bigo-oauth-signature：签名验证方式sign
 | ---------- | -------- | ------------ | ------------------------------------------------------------ |
 | seqid      | string   | 是           | 请求识别id，建议保证唯一性                                   |
 | timestamp  | int64    | 是           | ms时间戳                                                     |
-| ip         | string   | 是           | ip信息                                                       |
+| country    | string   | 是           | 国家码
 | lang       | string   | 否           | 语言                                                         |
 | version    | string   | 否           | 客户端版本                                                   |
 
@@ -50,13 +50,13 @@ bigo-oauth-signature：签名验证方式sign
         "cover_url":"https://xxx1",  //直播间封面
         "title":"test1",             //直播间标题
         "user_count":10,             //直播间人数
-        "onelink":"https://bigo.onelink.me/1168916328?af_xp=referral&pid=xiaomi&is_retargeting=true&af_reengagement_window=30d&c=xxxxx&af_dp=bigolive%3A%2F%2Flivevideoshow%3Froomid%3D123456789%26uid%3D1111111"
+        "onelink":"https://abcd1"    //直播间跳转链接
     },
     {
         "cover_url":"https://xxx2",  //直播间封面
         "title":"test2",             //直播间标题
         "user_count":100,            //直播间人数
-        "onelink":"https://bigo.onelink.me/1168916328?af_xp=referral&pid=xiaomi&is_retargeting=true&af_reengagement_window=30d&c=xxxxx&af_dp=bigolive%3A%2F%2Flivevideoshow%3Froomid%3D123456780%26uid%3D1111112"
+        "onelink":"https://abcd2"    //直播间跳转链接
     }
 ]
 ```
