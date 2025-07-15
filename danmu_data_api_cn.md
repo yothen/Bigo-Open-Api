@@ -372,14 +372,14 @@ bigo-oauth-signature：签名验证方式sign
     {
         "giftid":1234,//礼物id
         "gift_level":1,//礼物档位
-        "gift_value":10,//礼物价格
+        "value":10,//礼物价格
         "icon":"https://static.bigo.tv/xs9sxjsd.webp",//礼物图标icon
         "gift_name":"aaa" // 礼物名称
     },
     {
         "giftid":1235,//礼物id
         "gift_level":2,//礼物档位
-        "gift_value":10,//礼物价格
+        "value":10,//礼物价格
         "icon":"https://static.bigo.tv/xs9sxjsdssd.webp",//礼物图标icon
         "gift_name":"aaa" // 礼物名称
     }
