@@ -497,9 +497,9 @@ access_token：授权登录后获取的用户授权token
 | openid    | string   | 用户的openid                                                |
 | nick_name | string   | 用户昵称，建议使用此作为榜单显示                            |
 | bigo_id   | string   | 用户的bigoid                                                |
-| avatars   | json     | 用户头像{"medium":"","samll":"","big":""}                   |
+| avatars   | json     | 用户头像{"medium":"","small":"","big":""}                   |
 | lang      | string   | 用户的语言码                                                |
-| res_code  | int      | 错误码。200: success, 400: invalid error, 500: server error |
+| err_msg   | string   | 错误信息，仅失败时才会有该字段                                |
 |           |          |                                                             |
 
 Example：
@@ -514,7 +514,7 @@ HTTP/1.1 200
     "nick_name":"ID:861163128","bigo_id":"861163128",
     "res_code":200,
     "avatars":{
-        "medium":"","samll":"","big":""
+        "medium":"","small":"","big":""
     }
 }
 ```
@@ -524,3 +524,4 @@ HTTP/1.1 200
 
 ## **4.4 弹幕数据接口**
 [Danmu Data API](./danmu_data_api_cn.md)
+
