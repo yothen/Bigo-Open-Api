@@ -400,7 +400,7 @@ Description: API for obtaining some basic non-sensitive user data, should using 
 **API：**
 
 ```
-POST https://{{host_domain}}/oauth2/userV2
+POST https://{{host_domain}}/oauth2/userV3
 Authorization: Bearer {{access_token}}
 
 {}
@@ -435,7 +435,7 @@ No input parameters required
 | bigo_id       | string   | bigoid of the user                                           |
 | avatars       | json     | User avatar {"medium":"https://static-web.bigolive.tv/as/bigo-static/68539/96x96.png?resize=21&dw=195","small":"","big":""} |
 | rescode       | int      | 200: success, 500: server error          |
-| err_msg       | string   | error description                                             |
+| message       | string   | error description                                             |
 |               |          |                                                              |
 
  Example:
@@ -445,7 +445,8 @@ No input parameters required
     "openid":"AREs3WAE9dkxPHD2boypQFU9CJo8CITFhPhr91",
     "nick_name":"ID:861163128",
     "bigo_id":"861163128",
-    "res_code":200,
+    "rescode":200,
+    "message":"success",
     "avatars":{"medium":"","small":"","big":""}
 }
 ```
@@ -458,4 +459,5 @@ waiting for update
 ## 4.3. Damu Data API
 
 See: [Danmu Data API](./danmu_data_api_cn.md)
+
 
