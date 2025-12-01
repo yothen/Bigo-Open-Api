@@ -495,12 +495,12 @@ access_token：授权登录后获取的用户授权token
 | **参数**  | **类型** | **说明**                                                    |
 | --------- | -------- | ----------------------------------------------------------- |
 | openid    | string   | 用户的openid                                                |
-| nick_name | string   | 用户昵称，建议使用此作为榜单显示                            |
+| nick_name | string   | 用户昵称，建议使用此作为榜单显示                              |
 | bigo_id   | string   | 用户的bigoid                                                |
 | avatars   | json     | 用户头像{"medium":"","small":"","big":""}                   |
-| lang      | string   | 用户的语言码                                                |
+| lang      | string   | 用户的语言码                                                 |
 | err_msg   | string   | 错误信息，仅失败时才会有该字段                                |
-|           |          |                                                             |
+| rescode   | int      | 错误码。200: success, 500: 内部异常                          |
 
 Example：
 
@@ -524,4 +524,5 @@ HTTP/1.1 200
 
 ## **4.4 弹幕数据接口**
 [Danmu Data API](./danmu_data_api_cn.md)
+
 
