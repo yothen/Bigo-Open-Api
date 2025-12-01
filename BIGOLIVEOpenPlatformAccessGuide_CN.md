@@ -468,7 +468,7 @@ HTTP/1.1 200
 **API：**
 
 ```
-POST https://{{host_domain}}/oauth2/userV2
+POST https://{{host_domain}}/oauth2/userV3
 Authorization: Bearer {{access_token}}
 
 {}
@@ -499,7 +499,7 @@ access_token：授权登录后获取的用户授权token
 | bigo_id   | string   | 用户的bigoid                                                |
 | avatars   | json     | 用户头像{"medium":"","small":"","big":""}                   |
 | lang      | string   | 用户的语言码                                                 |
-| err_msg   | string   | 错误信息，仅失败时才会有该字段                                |
+| message   | string   | 具体错误信息                                                 |
 | rescode   | int      | 错误码。200: success, 500: 内部异常                          |
 
 Example：
@@ -511,8 +511,10 @@ HTTP/1.1 200
 
 {
     "openid":"AREs3WAE9dkxPHD2boypQFU9CJo8CITFhPhr91",
-    "nick_name":"ID:861163128","bigo_id":"861163128",
-    "res_code":200,
+    "nick_name":"ID:861163128",
+    "bigo_id":"861163128",
+    "rescode":200,
+    "message": "success",
     "avatars":{
         "medium":"","small":"","big":""
     }
@@ -524,5 +526,6 @@ HTTP/1.1 200
 
 ## **4.4 弹幕数据接口**
 [Danmu Data API](./danmu_data_api_cn.md)
+
 
 
