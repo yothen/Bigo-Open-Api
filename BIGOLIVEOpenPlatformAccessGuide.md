@@ -434,7 +434,8 @@ No input parameters required
 | nick_name     | string   | username, it is recommended to use this as the display  name on the list |
 | bigo_id       | string   | bigoid of the user                                           |
 | avatars       | json     | User avatar {"medium":"https://static-web.bigolive.tv/as/bigo-static/68539/96x96.png?resize=21&dw=195","small":"","big":""} |
-| res_code      | int      | 200: success, 400: invalid error, 500: server error          |
+| rescode       | int      | 200: success, 500: server error          |
+| err_msg       | string   | error description                                             |
 |               |          |                                                              |
 
  Example:
@@ -445,7 +446,7 @@ No input parameters required
     "nick_name":"ID:861163128",
     "bigo_id":"861163128",
     "res_code":200,
-    "avatars":{"medium":"","samll":"","big":""}
+    "avatars":{"medium":"","small":"","big":""}
 }
 ```
 
@@ -457,3 +458,4 @@ waiting for update
 ## 4.3. Damu Data API
 
 See: [Danmu Data API](./danmu_data_api_cn.md)
+
