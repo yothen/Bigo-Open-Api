@@ -878,6 +878,286 @@ Authorization：
 | message    | string   | 具体错误说明                                                 |
 
 
+## 15. 获取推流地址
+
+**说明**：第三方平台获取推流地址
+
+**频率控制**：全平台 300/s，单人5/s
+
+**API：**
+
+```
+POST https://{{host_domain}}/media/get_push_url
+Content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{{postdata}}
+```
+
+**头部说明：**
+
+Authorization：
+
+​	Bearer不要修改，是Bigo固定的一个鉴权方式
+
+​	access_token：授权登录后获取的用户授权token
+
+**请求参数说明：**
+
+| **参数**   | **类型** | **是否必填** | **说明**                                                     |
+| ---------- | -------- | ------------ | ------------------------------------------------------------ |
+| seqid      | string   | 是           | 请求识别id，建议保证唯一性                                   |
+| timestamp  | int64    | 是           | ms时间戳                                                     |
+| game_id    | string   | 是           | 识别游戏类型，由bigo平台分配。                               |
+
+**返回参数说明：**
+
+| **参数**   | **类型**   | **说明**                                                     |
+| --------   | --------   | ------------------------------------------------------------ |
+| seqid      | string     | 原封不动返回请求的seqid                                      |
+| rescode    | int        | 200：成功 400：请求参数异常 401：达到调用频限 500：平台异常，可重试 |
+| message    | string     | 具体错误说明                                                 |
+| url        | string     | bigo提供的服务推流地址                                       |
+| token      | string     | 串流密钥                                                     |
+| expires_in | int        | key有效时间，单位秒                                          |
+
+## 16. 查询游戏包裹信息
+
+**说明**：第三方平台查询游戏包裹信息
+
+**频率控制**：全平台 300/s，单人5/s
+
+**API：**
+
+```
+POST https://{{host_domain}}/sign/gift/get_backpack_list
+Content-type: application/json
+bigo-oauth-signature: {{sign}}
+bigo-timestamp: {{timestamp}}
+bigo-client-id: {{clientid}}
+
+
+{{postdata}}
+```
+
+**头部说明：**
+
+bigo-oauth-signature：签名验证方式sign
+
+**请求参数说明：**
+
+| **参数**   | **类型** | **是否必填** | **说明**                                                     |
+| ---------- | -------- | ------------ | ------------------------------------------------------------ |
+| seqid      | string   | 是           | 请求识别id，建议保证唯一性                                   |
+| timestamp  | int64    | 是           | ms时间戳                                                     |
+| game_id    | string   | 是           | 识别游戏类型，由bigo平台分配。                               |
+
+**返回参数说明：**
+
+| **参数**   | **类型**   | **说明**                                                     |
+| --------   | --------   | ------------------------------------------------------------ |
+| seqid      | string     | 原封不动返回请求的seqid                                      |
+| rescode    | int        | 200：成功 400：请求参数异常 401：达到调用频限 500：平台异常，可重试 |
+| message    | string     | 具体错误说明                                                 |
+| list       | json array | 包裹信息列表，详见下图数据说明，无分页返回 |
+
+```
+"list":[
+    {
+        "id":1234,     //包裹id
+        "name":"test", //包裹名称
+        "image_url":"https://static.bigo.tv/xxx.webp",//包裹图片
+        "price":10     //包裹价格
+    },
+    {
+        "id":1235,     //包裹id
+        "name":"test1", //包裹名称
+        "image_url":"https://static.bigo.tv/xxx.webp",//包裹图片
+        "price":20     //包裹价格
+    }
+]
+```
+
+## 17. 代币扣除
+
+**说明**：第三方平台访问bigo平台进行代币扣除
+
+**频率控制**：全平台 300/s，单人5/s
+
+**API：**
+
+```
+POST https://{{host_domain}}/gift/sub_diamond
+Content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{{postdata}}
+```
+
+**头部说明：**
+
+Authorization：
+
+​	Bearer不要修改，是Bigo固定的一个鉴权方式
+
+​	access_token：授权登录后获取的用户授权token
+
+**请求参数说明：**
+
+| **参数**     | **类型** | **是否必填** | **说明**                                                     |
+| ----------   | -------- | ------------ | ------------------------------------------------------------ |
+| seqid        | string   | 是           | 请求识别id，建议保证唯一性                                   |
+| timestamp    | int64    | 是           | ms时间戳                                                     |
+| game_id      | string   | 是           | 识别游戏类型，由bigo平台分配。                               |
+| order_id     | string   | 是           | 订单号，同一个gamg_id的order_id不能重复                      |
+| dia_count     | int64   | 是           | 钻石数量                                                     |
+| business_type| int32    | 是           | 业务类型，由bigo平台分配。                                   |
+
+**返回参数说明：**
+
+| **参数**   | **类型**   | **说明**                                                     |
+| --------   | --------   | ------------------------------------------------------------ |
+| seqid      | string     | 原封不动返回请求的seqid                                      |
+| rescode    | int        | 200：成功 400：请求参数异常 401：达到调用频限 500：平台异常，可重试 501: 余额不足  502: 消费封禁 |
+| message    | string     | 具体错误说明                                                 |
+
+## 18. 包裹发放
+
+**说明**：第三方平台访问bigo平台进行包裹发放
+
+**频率控制**：全平台 300/s，单人5/s
+
+**API：**
+
+```
+POST https://{{host_domain}}/gift/deliver_backpack
+Content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{{postdata}}
+```
+
+**头部说明：**
+
+Authorization：
+
+​	Bearer不要修改，是Bigo固定的一个鉴权方式
+
+​	access_token：授权登录后获取的用户授权token
+
+**请求参数说明：**
+
+| **参数**            | **类型**   | **是否必填** | **说明**                                                     |
+| ----------          | --------   | ------------ | ------------------------------------------------------------ |
+| seqid               | string     | 是           | 请求识别id，建议保证唯一性                                   |
+| timestamp           | int64      | 是           | ms时间戳                                                     |
+| game_id             | string     | 是           | 识别游戏类型，由bigo平台分配。                               |
+| order_id            | string     | 是           | 订单号，同一个gamg_id的order_id不能重复                      |
+| business_type       | int32      | 是           | 业务类型，由bigo平台分配。                                   |
+| sub_dia_order_id    | string     | 否           | 扣钻订单号，如是先扣钻，再加包裹，需填写扣钻order_id         |
+| items               | json array | 是           | 包裹信息列表，详见下图数据说明                               |
+```
+"items":[
+    {
+        "id":1234,//包裹id
+        "count":1,//包裹数据
+    },
+    {
+        "id":1235,//包裹id
+        "count":10,//包裹数据
+    }
+]
+```
+
+**返回参数说明：**
+
+| **参数**   | **类型**   | **说明**                                                     |
+| --------   | --------   | ------------------------------------------------------------ |
+| seqid      | string     | 原封不动返回请求的seqid                                      |
+| rescode    | int        | 200：成功 400：请求参数异常 401：达到调用频限 500：平台异常，可重试 501: 余额不足  502: 消费封禁 |
+| message    | string     | 具体错误说明                                                 |
+
+
+## 19. 获取用于上传对账流水数据的地址信息
+
+**说明**：第三方平台获取上传对账流水数据地址信息
+
+**频率控制**：全平台 300/s，单人5/s
+
+**API：**
+
+```
+POST https://{{host_domain}}/gift/get_upload_data_url
+Content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{{postdata}}
+```
+
+**头部说明：**
+
+Authorization：
+
+​	Bearer不要修改，是Bigo固定的一个鉴权方式
+
+​	access_token：授权登录后获取的用户授权token
+
+**请求参数说明：**
+
+| **参数**   | **类型** | **是否必填** | **说明**                                                     |
+| ---------- | -------- | ------------ | ------------------------------------------------------------ |
+| seqid      | string   | 是           | 请求识别id，建议保证唯一性                                   |
+| timestamp  | int64    | 是           | ms时间戳                                                     |
+| game_id    | string   | 是           | 识别游戏类型，由bigo平台分配。                               |
+
+**返回参数说明：**
+
+| **参数**   | **类型**   | **说明**                                                     |
+| --------   | --------   | ------------------------------------------------------------ |
+| seqid      | string     | 原封不动返回请求的seqid                                      |
+| rescode    | int        | 200：成功 400：请求参数异常 401：达到调用频限 500：平台异常，可重试 501: 余额不足  502: 消费封禁 |
+| message    | string     | 具体错误说明                                                 |
+| url        | string     | 上传地址                                       |
+| token      | string     | 上传凭证 |
+| expires_in | int        | key有效时间，单位秒                                          |
+```
+上传方式说明
+1.body 上传，不超过50MB
+* 请求方法: POST     数据类型: BINARY   响应类型: JSON
+* 请求头
+Authorization 从如上接口获取的上传凭证token值
+Content-Type application/octet-stream
+
+* 返回数据
+ status： 200 表示上传成功； 401： 缺少Authorization头和 验证失败
+ json格式数据：{"url":"http://xxxx.png",  "mime":"image/png"}
+
+* demo(python示例)
+#/usr/bin/env python
+# -*- coding:utf8 -*-
+#################body方式上传
+import requests
+
+url = 'https:xxxx'
+token = 'xxxxx'
+
+headers = {
+  'Authorization': token,
+  'Content-Type': 'application/octet-stream',
+}
+
+upload_file = '/test_file'
+
+try:
+  data = open(upload_file, 'rb').read()
+  response = requests.post(url, headers=headers, data=data)
+  if response.status_code == 200:
+    print (response.json())
+  else:
+    print ('Upload file failed, exit...')
+except Exception as e:
+  print (e)
+```
 
 # 二、推送给第三方接口说明
 
