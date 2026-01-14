@@ -434,6 +434,7 @@ No input parameters required
 | nick_name     | string   | username, it is recommended to use this as the display  name on the list |
 | bigo_id       | string   | bigoid of the user                                           |
 | avatars       | json     | User avatar {"medium":"https://static-web.bigolive.tv/as/bigo-static/68539/96x96.png?resize=21&dw=195","small":"","big":""} |
+| gender        | string   | User gender 0:man, 1:woman, 2:unknown/secret 3:non-binary    |
 | rescode       | int      | 200: success, 500: server error          |
 | message       | string   | error description                                             |
 |               |          |                                                              |
@@ -447,7 +448,8 @@ No input parameters required
     "bigo_id":"861163128",
     "rescode":200,
     "message":"success",
-    "avatars":{"medium":"","small":"","big":""}
+    "avatars":{"medium":"","small":"","big":""},
+    "gender":"2"
 }
 ```
 
@@ -459,5 +461,6 @@ waiting for update
 ## 4.3. Damu Data API
 
 See: [Danmu Data API](./danmu_data_api_cn.md)
+
 
 
