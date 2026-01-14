@@ -499,6 +499,7 @@ access_token：授权登录后获取的用户授权token
 | bigo_id   | string   | 用户的bigoid                                                |
 | avatars   | json     | 用户头像{"medium":"","small":"","big":""}                   |
 | lang      | string   | 用户的语言码                                                 |
+| gender    | string   | 用户的性别，0:man, 1:woman, 2:unknown/secret 3:non-binary    |
 | message   | string   | 具体错误信息                                                 |
 | rescode   | int      | 错误码。200: success, 500: 内部异常                          |
 
@@ -526,6 +527,7 @@ HTTP/1.1 200
 
 ## **4.4 弹幕数据接口**
 [Danmu Data API](./danmu_data_api_cn.md)
+
 
 
 
