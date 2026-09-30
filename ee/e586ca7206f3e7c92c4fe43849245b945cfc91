@@ -1,0 +1,21 @@
+common_api_cn.md
+  s_7a2bf074a4c16d::t_ee5c8b45340c46 63-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "eee586ca7206f3e7c92c4fe43849245b945cfc91",
+  "prompts": {},
+  "logical_commit_id": "eee586ca7206f3e7c92c4fe43849245b945cfc91",
+  "sessions": {
+    "s_7a2bf074a4c16d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1e9-c137-73a3-beef-22a61e26f2f7",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "yebaoshan <yebaoshan@bigo.sg>",
+      "total_additions": 94
+    }
+  }
+}
